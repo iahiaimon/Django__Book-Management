@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Add Book
+{% endblock %}
+
+{% block content %}
+<div class="fullform">
+
+    <div class="container w-75 m-auto rounded-4 my-4 mb-5" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+        <h1 class="text-center">Add Book To Your List</h1>
+        <form class=" p-5 " method="post" enctype="multipart/form-data">
+            {% load crispy_forms_tags %}
+            {% csrf_token %}
+            {{ form | crispy }}
+            <div class="d-flex justify-content-center pt-4">
+                <button type="submit" class="btn btn-success w-25 text-center fw-bold">Save</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+{% endblock %}

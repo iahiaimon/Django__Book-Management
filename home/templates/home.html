@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+All Books
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <div class="row d-flex flex-row flex-nowrap overflow-auto">
+        {% for book in books %}
+        <div class="card mx-3" style="width: 18rem;">
+            <img src="{{ book.image.url }}" class="card-img-top" alt="book_image">
+            <div class="card-body">
+                <h5 class="card-title">Name: {{ book.title }}</h5>
+                <h6 class="card-title">Author: {{ book.author }}</h6>
+                <h6 class="card-title fw-bold">ISBN: {{ book.isbn }}</h6>
+                <h6 class="card-title fw-bold">Price: {{ book.price }}</h6>
+                <p class="card-text">Description: {{ book.description }}</p>
+                <a href="{% url 'updateBook' book.id %}" class="btn btn-primary">Update</a>
+                <a href="{% url 'deleteBook' book.id %}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
