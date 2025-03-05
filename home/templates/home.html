@@ -6,19 +6,28 @@ All Books
 
 {% block content %}
 
-<div class="container mt-4">
-    <div class="row d-flex flex-row flex-nowrap overflow-auto">
+<div class="container mx-auto mt-4 px-4 mb-5">
+    <h1 class="text-center mb-3">All book list</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {% for book in books %}
-        <div class="card mx-3" style="width: 18rem;">
-            <img src="{{ book.image.url }}" class="card-img-top" alt="book_image">
-            <div class="card-body">
-                <h5 class="card-title">Name: {{ book.title }}</h5>
-                <h6 class="card-title">Author: {{ book.author }}</h6>
-                <h6 class="card-title fw-bold">ISBN: {{ book.isbn }}</h6>
-                <h6 class="card-title fw-bold">Price: {{ book.price }}</h6>
-                <p class="card-text">Description: {{ book.description }}</p>
-                <a href="{% url 'updateBook' book.id %}" class="btn btn-primary">Update</a>
-                <a href="{% url 'deleteBook' book.id %}" class="btn btn-danger">Delete</a>
+        <div
+            class="flex w-full max-w-2xl bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 card-item">
+            <img class="w-48 h-auto object-cover rounded-s-lg" src="{{ book.image.url }}" alt="book image">
+            <!-- Book Details -->
+            <div class="flex flex-col justify-between p-4">
+                <h5 class="text-xl font-bold text-gray-900 dark:text-white">Title : {{ book.title }}</h5>
+                <p class="text-gray-700">Author : {{ book.author }}</p>
+                <p class="text-gray-700">ISBN : {{ book.isbn }}</p>
+                <p class="text-gray-700">Publisher : {{ book.publisher }}</p>
+                <p class="text-gray-700">Price : ${{ book.price }}</p>
+
+                <!-- Action Buttons -->
+                <div class="mt-3 flex space-x-2">
+                    <a href="{% url 'updateBook' book.id %}"
+                        class="px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700"  style="text-decoration: none;">Update</a>
+                    <a href="{% url 'deleteBook' book.id %}"
+                        class="px-4 py-2 text-white bg-red-600 rounded-lg hover:bg-red-700"  style="text-decoration: none;">Delete</a>
+                </div>
             </div>
         </div>
         {% endfor %}
@@ -26,4 +35,6 @@ All Books
 </div>
 
 
+
 {% endblock %}
+
