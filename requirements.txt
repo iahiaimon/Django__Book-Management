@@ -1,4 +1,6 @@
 django
 pillow
 gunicorn
+django-crispy-forms
+crispy-bootstrap5
 
