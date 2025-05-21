@@ -1,3 +1,4 @@
-pipenv install pillow
-pipenv install gunicorn
-pip freeze > requirements.txt
+django
+pillow
+gunicorn
+
